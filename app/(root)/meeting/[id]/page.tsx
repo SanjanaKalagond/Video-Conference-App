@@ -16,6 +16,10 @@ const MeetingPage = () => {
   const id = params?.id as string | undefined; // assert as string | undefined
   const { isLoaded, user } = useUser();
 
+  // Move hooks before conditional returns
+  const { call, isCallLoading } = useGetCallById(id || '');
+  const [isSetupComplete, setIsSetupComplete] = useState(false);
+
   // Guard if id is missing
   if (!id) {
     return (
@@ -24,9 +28,6 @@ const MeetingPage = () => {
       </p>
     );
   }
-
-  const { call, isCallLoading } = useGetCallById(id);
-  const [isSetupComplete, setIsSetupComplete] = useState(false);
 
   if (!isLoaded || isCallLoading) return <Loader />;
 

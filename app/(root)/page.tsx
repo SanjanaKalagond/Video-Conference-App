@@ -15,10 +15,11 @@ const Home = () => {
   const [nextMeetingTime, setNextMeetingTime] = useState<string | null>(null);
 
   useEffect(() => {
+    const currentTime = new Date();
     if (upcomingCalls && upcomingCalls.length > 0) {
       const sortedCalls = upcomingCalls.sort((a, b) => new Date(a.state.startsAt!).getTime() - new Date(b.state.startsAt!).getTime());
 
-      const nextMeeting = sortedCalls.find(call => new Date(call.state.startsAt!) > now);
+      const nextMeeting = sortedCalls.find(call => new Date(call.state.startsAt!) > currentTime);
 
       if (nextMeeting) {
         const nextMeetingDate = new Date(nextMeeting.state.startsAt!);
@@ -29,7 +30,7 @@ const Home = () => {
         setNextMeetingTime(meetingTime);
       }
     }
-  }, [upcomingCalls, now]);
+  }, [upcomingCalls]);
 
   return (
     <section className="flex size-full flex-col gap-5 text-white">
