@@ -18,6 +18,9 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
+# Azure deployment configs (contains secrets)
+azure-config.txt
+
 # system
 .DS_Store
 Thumbs.db
