@@ -40,6 +40,7 @@ jobs:
         NEXT_PUBLIC_CLERK_SIGN_IN_URL: /sign-in
         NEXT_PUBLIC_CLERK_SIGN_UP_URL: /sign-up
         NEXT_PUBLIC_STREAM_API_KEY: ${{ secrets.NEXT_PUBLIC_STREAM_API_KEY }}
+        NEXT_PUBLIC_GLADIA_API_KEY: ${{ secrets.NEXT_PUBLIC_GLADIA_API_KEY }}
         NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
       run: npm run build
 
@@ -75,6 +76,7 @@ jobs:
           NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
           NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
           NEXT_PUBLIC_STREAM_API_KEY=${{ secrets.NEXT_PUBLIC_STREAM_API_KEY }}
+          NEXT_PUBLIC_GLADIA_API_KEY=${{ secrets.NEXT_PUBLIC_GLADIA_API_KEY }}
           NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
         cache-from: type=registry,ref=${{ secrets.ACR_LOGIN_SERVER }}/video-conference-app:buildcache
         cache-to: type=registry,ref=${{ secrets.ACR_LOGIN_SERVER }}/video-conference-app:buildcache,mode=max
