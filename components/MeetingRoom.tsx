@@ -20,6 +20,8 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import Loader from './Loader';
+import ClosedCaptionsToggle from './ClosedCaptionsToggle';
+import CaptionsOverlay from './CaptionsOverlay';
 import EndCallButton from './EndCallButton';
 import { cn } from '@/lib/utils';
 
@@ -87,6 +89,7 @@ const MeetingRoom = () => {
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+        <ClosedCaptionsToggle />
         <CallStatsButton />
         <button onClick={() => setShowParticipants((prev) => !prev)}>
           <div className=" cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
@@ -95,6 +98,7 @@ const MeetingRoom = () => {
         </button>
         {!isPersonalRoom && <EndCallButton />}
       </div>
+      <CaptionsOverlay />
     </section>
   );
 };

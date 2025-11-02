@@ -26,11 +26,18 @@ const StreamVideoProvider = ({ children, callId }: StreamProviderProps) => {
     if (!isLoaded || !user) return;
     if (!API_KEY) throw new Error('Stream API key is missing');
 
+    const displayName =
+      user.fullName ||
+      [user.firstName, user.lastName].filter(Boolean).join(' ') ||
+      user.username ||
+      user.primaryEmailAddress?.emailAddress ||
+      user.id;
+
     const client = new StreamVideoClient({
       apiKey: API_KEY,
       user: {
         id: user.id,
-        name: user.username || user.id,
+        name: displayName,
         image: user.imageUrl || DEFAULT_AVATAR, // fallback for PiP
       },
       tokenProvider,
