@@ -21,7 +21,7 @@ const CaptionsOverlay = () => {
   }
 
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-28 mx-auto flex w-full max-w-3xl flex-col gap-2 px-4 text-white">
+    <div className="pointer-events-none absolute inset-x-0 bottom-[120px] md:bottom-[140px] mx-auto flex w-full max-w-3xl flex-col gap-2 px-4 text-white">
       {visibleCaptions.map((caption) => {
         const speakerName =
           caption.user?.name ??
