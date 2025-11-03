@@ -5,13 +5,13 @@ import { getMomPdfPath } from '@/lib/storage';
 export const runtime = 'nodejs';
 
 interface Params {
-  params: {
+  params: Promise<{
     callId: string;
-  };
+  }>;
 }
 
 export async function GET(_: Request, { params }: Params) {
-  const callId = params.callId;
+  const { callId } = await params;
   if (!callId) {
     return NextResponse.json({ error: 'callId is required' }, { status: 400 });
   }
@@ -39,4 +39,3 @@ export async function GET(_: Request, { params }: Params) {
     );
   }
 }
-
